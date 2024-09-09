@@ -1,6 +1,5 @@
 # Additinol
 .env
-.env.local
 *.env
 
 # Logs

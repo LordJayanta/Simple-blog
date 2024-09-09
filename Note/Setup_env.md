@@ -9,7 +9,7 @@ In the root folder, create a file named `.env`.
 
 In this project, we have provided a file named `.env.samples` where all the environment variables required for this project are listed. You can either rename this file or create a new one.
 
-If you're using `Vite`, be sure to prefix the variable names with `VITE_`. Suppose, you have created a variable called `VITE_VARIBLE_NAME`. To access these variables in your code, use `import.meta.env.VITE_VARIBLE_NAME`.
+If you're using `Vite`, be sure to prefix the variable names with `VITE_`. Suppose, you have created a variable called "VITE_VARIBLE_NAME". To access these variables in your code, use `import.meta.env.VITE_VARIBLE_NAME`.
 
 Example:
 ```
