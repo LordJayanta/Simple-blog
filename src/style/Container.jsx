@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Container({children}) {
+function Container({
+  children, 
+  className='',
+  ...props
+}) {
   return (
-    <div>
+    <div className={`${className} container lg:w-[90%] m-auto`} {...props}>
       {children}
     </div>
   )

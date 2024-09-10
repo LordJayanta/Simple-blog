@@ -1,10 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import { Header, Footer } from './component'
 
 function App() {
   return (
     <div>
-      <Outlet/>
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   )
 }
