@@ -14,7 +14,7 @@ const FooterLinks = [
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className='h-[10vh]'>
         <Container>
 
           <div className='flex gap-5 items-center justify-between'>

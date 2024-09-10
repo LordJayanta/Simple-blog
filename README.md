@@ -2,13 +2,13 @@
 > **Author** : *LordJayanta*
 
 ### Targets:
-- <div><input type='checkbox' checked/> Setup Basic Project</div>
-- <div><input type='checkbox' checked/> Setup react router</div>
-- <div><input type='checkbox' /> Create simple UI/UX Using tellwindcss </div>
-
-- <div><input type='checkbox' /> Create simple UI/UX Using tellwindcss </div>
-- <div><input type='checkbox'/> User Authentication using Appwrite </div>
-- <div><input type='checkbox'/> State Managment Using Redux toolkit </div>
+- Setup Basic Project <input type='checkbox' checked/>
+- Setup react router <input type='checkbox' checked/>
+- Create simple UI/UX Using tellwindcss <input type='checkbox' />
+    - wrap button(style) with navlink : <input type='checkbox' checked/>
+- Create simple UI/UX Using tellwindcss <input type='checkbox' />
+- User Authentication using Appwrite<input type='checkbox'/> 
+- State Managment Using Redux toolkit<input type='checkbox'/> 
 
 ### Guide Notes:
 - [SetUp Env variable on vite project](./Note/Setup_env.md)

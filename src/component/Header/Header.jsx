@@ -20,7 +20,7 @@ const HeaderLinks = [
 
 function Header() {
   return (
-    <header >
+    <header className='h-[10vh]'>
       <Container className='flex items-center justify-between py-2'>
         <Logo className='text-2xl' />
 
@@ -30,18 +30,21 @@ function Header() {
             <NavLink
               key={index + link.path}
               to={link.path}
-              className={({ isActive }) => isActive ? 'font-bold text-blue-500' : null }
+              className={({ isActive }) => isActive ? 'font-bold text-blue-500' : null}
             >{link.name}</NavLink>
           ))}
         </div>
 
         <div className='flex gap-2'>
-          <NavLink to={'/signup'}>
-            <Button rounded='rounded-full'>SignUp</Button>
-          </NavLink>
-          <NavLink to={'/login'}>
-            <Button fill rounded='rounded-full'>Login</Button>
-          </NavLink>
+          <Button
+            rounded='rounded-full'
+            to={'/signup'}
+          >SignUp</Button>
+          <Button
+            fill
+            rounded='rounded-full'
+            to={'/login'}
+          >Login</Button>
         </div>
       </Container>
     </header>
