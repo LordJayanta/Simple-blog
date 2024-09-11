@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import {About, Admin, Contact, Error404, Home, Login, SignUp} from './pages'
+import {About, Admin, Contact, Dashboard, Error404, Home, Login, SignUp} from './pages'
 
 const router = createBrowserRouter([
   {
@@ -34,8 +34,27 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: 'admin',
+    path: '/admin',
     element: <Admin/>,
+    children: [
+      {
+        // path: '/',  // This is a Error
+        path: '',  // This is now a relative path, it will match '/admin'
+        element: <Dashboard/>
+      },
+      {
+        path: 'Profile', 
+        element: <Home/>
+      },
+      {
+        path: 'AddPage', 
+        element: <Home/>
+      },
+      {
+        path: 'AddPost', 
+        element: <Home/>
+      },
+    ],
     errorElement: <Error404/>,
   }
 ])

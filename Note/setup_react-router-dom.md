@@ -158,3 +158,54 @@ In this example:
 ### Benefits of `<Outlet>`:
 - **Nested Routing**: Enables you to handle nested routes more cleanly.
 - **Code Reusability**: You can define parent layouts that are shared between different child routes, rendering only the specific child content dynamically.
+
+
+## NavLink : end props
+
+In React Router (version 6), by default, a `NavLink` is considered **active** if the current URL **starts** with the `path` you provide. So, if you have a path like `'/admin'`, it will be considered active not only for `'/admin'` but also for any nested routes like `'/admin/profile'`, `'/admin/AddPost'`, etc. 
+
+**Example:**
+
+- If you're at `/admin/profile`, the link to `/admin` (Dashboard) would still be considered active because `/admin` is a prefix for `/admin/profile`.
+
+To fix this issue, we need to make sure that the `NavLink` is only considered active when the path **exactly** matches `/admin`. In React Router v6, we use the `end` prop to achieve this behavior.
+
+### What Does `end={item.path === '/admin'}` Mean?
+
+This part of the code:
+```jsx
+end={item.path === '/admin'}
+```
+
+is saying:
+- **If the current `item.path` is `/admin` (for the "Dashboard" item)**, set the `end` prop to `true`.
+- **Otherwise**, set the `end` prop to `false` for the other paths like `/admin/profile`, `/admin/AddPost`, etc.
+
+### What Does the `end` Prop Do?
+
+The `end` prop tells React Router:
+- **If `end` is `true`**, only mark the `NavLink` as active if the current URL **exactly matches** the path.
+- **If `end` is `false`** (or not present), the `NavLink` will be marked as active if the current URL **starts with** the path.
+
+### How It Works in Your Case:
+
+- **For the "Dashboard" link (`'/admin'`)**:
+  - We want the link to be active **only** when the URL is **exactly** `'/admin'`. This is why we set `end={true}` for this link.
+- **For the other links like "Profile" (`'/admin/profile'`)**:
+  - We don’t want to use `end`, because we still want these links to be active when the URL starts with `'/admin/profile'` or `'/admin/AddPost'`.
+
+### Example with and without `end`:
+
+Without `end`:
+- If you're on `/admin/profile`, the "Dashboard" link (which is `/admin`) will also be considered active, which is not what you want.
+
+With `end={true}`:
+- If you're on `/admin/profile`, the "Dashboard" link will **not** be active because the path is not an **exact** match for `/admin`.
+
+### Summary of the line `end={item.path === '/admin'}`:
+- **`item.path === '/admin'`** checks if the current item's path is `'/admin'`.
+- **`end={true}`** is applied **only** to the "Dashboard" link, so it is only active when the URL is exactly `/admin`.
+- **Other links** do not get the `end` prop because their paths should still be considered active for nested routes.
+
+---
+

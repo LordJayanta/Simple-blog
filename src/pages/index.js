@@ -7,7 +7,7 @@ import SignUp from "./SignUp/SignUp";
 import Error404 from "./Error/Error404"
 
 import Admin from "./Admin/Admin";
-import AdminDesboard from "./AdminDesboard/AdminDesboard";
+import Dashboard from "./Dashboard/Dashboard";
 
 export {
     // general
@@ -22,5 +22,5 @@ export {
 
     // Admin
     Admin,
-    AdminDesboard,
+    Desboard,
 }
