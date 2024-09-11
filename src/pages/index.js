@@ -22,5 +22,5 @@ export {
 
     // Admin
     Admin,
-    Desboard,
+    Dashboard,
 }
