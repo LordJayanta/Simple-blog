@@ -1,7 +1,7 @@
 import React from 'react'
 import { Logo } from '../index'
 import { NavLink } from 'react-router-dom'
-import { Container } from '../../style'
+import { Container } from '../../component'
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const FooterLinks = [

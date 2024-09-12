@@ -7,11 +7,29 @@ const Button = ({
   className = '',
   fill = false,
   rounded = 'rounded-md',
-  to = '/',
+  to,
   ...props
 }) => {
-  return (
-    <NavLink to={to}>
+
+  if (to) {
+    return (
+      <NavLink to={to}>
+        <button
+          className={`
+          ${className}
+          px-5 py-1.5 border border-black transition-all font-semibold
+          ${rounded}
+          ${fill ? 'text-white bg-black hover:bg-blue-900' : 'text-black bg-transparent hover:bg-black hover:text-white'}
+        `}
+          type={type}
+          {...props}>
+          {children}
+        </button>
+      </NavLink>
+    )
+  }
+  else {
+    return (
       <button
         className={`
         ${className}
@@ -23,8 +41,8 @@ const Button = ({
         {...props}>
         {children}
       </button>
-    </NavLink>
-  )
+    )
+  }
 }
 
 export default Button

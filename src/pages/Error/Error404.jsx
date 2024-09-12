@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Container } from '../../style'
+import { Button, Container, SideImageContainer } from '../../component'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import {SideImageContainer} from '../../component';
 
 const Links = [
   {
@@ -70,7 +69,7 @@ function Error404() {
             >We can&apos;t find that page</h1>
             <p>Sorry, the page you are looking for doesn&apos;t exist or has been moved.</p>
             <div className='flex gap-2 items-center mt-5'>
-              <Button className='flex gap-2 items-center'>
+              <Button to={'/'} className='flex gap-2 items-center'>
                 <FaArrowLeft />
                 <span>Go back</span>
               </Button>
@@ -79,7 +78,7 @@ function Error404() {
               </Button>
             </div>
           </div>
-          
+
           <div className="mt-10 space-y-6">
             {Links.map((link) => (
               <div className="">
