@@ -3,64 +3,69 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import {About, Admin, Contact, Dashboard, Error404, Home, Login, SignUp} from './pages'
+import { About, Admin, Contact, Dashboard, Error404, Home, Login, SignUp } from './pages'
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <Error404/>,
+    errorElement: <Error404 />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/about',
-        element: <About/>
+        element: <About />
       },
       {
         path: '/contact',
-        element: <Contact/>
+        element: <Contact />
       },
       {
         path: '/login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: '/SignUp',
-        element: <SignUp/>
+        element: <SignUp />
       },
     ]
   },
   {
     path: '/admin',
-    element: <Admin/>,
+    element: <Admin />,
     children: [
       {
         // path: '/',  // This is a Error
         path: '',  // This is now a relative path, it will match '/admin'
-        element: <Dashboard/>
+        element: <Dashboard />
       },
       {
-        path: 'Profile', 
-        element: <Home/>
+        path: 'Profile',
+        element: <Home />
       },
       {
-        path: 'AddPage', 
-        element: <Home/>
+        path: 'AddPage',
+        element: <Home />
       },
       {
-        path: 'AddPost', 
-        element: <Home/>
+        path: 'AddPost',
+        element: <Home />
       },
     ],
-    errorElement: <Error404/>,
+    errorElement: <Error404 />,
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )
