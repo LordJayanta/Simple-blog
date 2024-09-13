@@ -3,6 +3,12 @@ import { Button, Container, Input, SideImageContainer } from '../../component'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
+// appwrite : TODO :: update later 
+import config from '../../config/config'
+import { Client, Account, ID } from 'appwrite'
+const client = new Client().setEndpoint(config.serverUrl).setProject(config.serverProjectID)
+const account = new Account(client)
+
 const SignUp = () => {
   const userNameInputRef = useRef()
   const emailInputRef = useRef()
@@ -17,6 +23,9 @@ const SignUp = () => {
   const SignUpSubmit = (data) => {
     try {
       console.log(data);
+      account.create(ID.unique(), data.email, data.password, data.name)
+        .then((res) => { console.log(res) })
+        .catch((err) => { console.log(err) })
     } catch (error) {
       console.log('SignUp :: ', error);
     }
@@ -28,7 +37,7 @@ const SignUp = () => {
           <div className="w-full p-10">
             <h1 className='text-gray-800 text-4xl font-extrabold mb-3'>Sign Up</h1>
             <h3>Alrady have an account <NavLink to={'/login'} className={'font-bold text-blue-600'}>Login here!</NavLink></h3>
-            
+
             {errors.name && <p
               role="alert"
               className='text-xs text-red-500'

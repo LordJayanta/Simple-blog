@@ -1,8 +1,16 @@
 import React, { useRef } from 'react'
 import SideImageContainer from '../../component/SideImageContainer/SideImageContainer'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Input, Button, Container } from '../../component'
 import { useForm } from 'react-hook-form'
+
+import { useDispatch } from 'react-redux'
+import { login } from '../../store/authSlice'
+import config from '../../config/config'
+import { Client, Account, ID } from 'appwrite'
+const client = new Client().setEndpoint(config.serverUrl).setProject(config.serverProjectID)
+const account = new Account(client)
+
 
 const Login = () => {
     const {
@@ -14,9 +22,18 @@ const Login = () => {
     const emailInputRef = useRef()
     const passInputRef = useRef()
 
+    const dispatch = useDispatch()
+    const navigation = useNavigate()
     const submitLogin = async (data) => {
         try {
             console.log(data);
+            account.createEmailPasswordSession(data.email, data.password)
+            .then((res) => {
+                console.log(res)
+                dispatch(login(res))
+                navigation('/admin')
+            })
+            .catch((err) => {console.log('login :: appwrite :: ',err )})
         } catch (error) {
             console.log('Login :: ', error);
         }

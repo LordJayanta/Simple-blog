@@ -5,6 +5,13 @@ import { MdPostAdd, MdLogout } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
+import { useNavigation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/authSlice'
+import config from '../../config/config';
+import { Client, Account } from 'appwrite';
+const client = new Client().setEndpoint(config.serverUrl).setProject(config.serverProjectID)
+const account = new Account(client)
 
 const sideberItems = [
   {
@@ -30,6 +37,10 @@ const sideberItems = [
 ]
 
 const Sidebar = () => {
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+  const userdata = useSelector(state => state.auth)
+
   return (
     <div className='bg-[#f7f7f8] h-screen p-5'>
       <div className="side-header mb-7">
@@ -55,7 +66,18 @@ const Sidebar = () => {
       ))}
 
       <button
-        className={`flex gap-3 w-full items-center rounded-sm text-sm hover:shadow-md hover:text-white hover:bg-red-500 p-3 text-zinc-600 `}>
+        className={`flex gap-3 w-full items-center rounded-sm text-sm hover:shadow-md hover:text-white hover:bg-red-500 p-3 text-zinc-600 `}
+        onClick={() => {
+          console.log('logout :: cliked ',)
+          account.deleteSessions().then((data) => {
+            console.log('logout :: data :: ', data)
+            dispatch(logout())
+            navigation('/login')
+          }).catch((err) => {
+            console.error(err)
+          })
+        }}
+      >
         <MdLogout className='w-[20px] h-[20px]' />
         <span className='hidden lg:block'>Logout</span>
       </button>
