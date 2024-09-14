@@ -2,8 +2,12 @@ import React, { useRef } from 'react'
 import { Button, Container, Input, SideImageContainer } from '../../component'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import authServise from '../../appwrite/auth'
+import { useDispatch } from 'react-redux'
+import { login } from '../../store/authSlice'
 
 const SignUp = () => {
+  const dispatch = useDispatch()
   const userNameInputRef = useRef()
   const emailInputRef = useRef()
   const passInputRef = useRef()
@@ -14,9 +18,14 @@ const SignUp = () => {
     formState: { errors }
   } = useForm()
 
-  const SignUpSubmit = (data) => {
+  const SignUpSubmit = async (data) => {
     try {
       console.log(data);
+      const session = await authServise.createAccout(data)
+      if (session) {
+        const userData = await authServise.getCurrentUser()
+        if(userData) dispatch(login({userData, session}))
+      }
     } catch (error) {
       console.log('SignUp :: ', error);
     }
@@ -28,7 +37,7 @@ const SignUp = () => {
           <div className="w-full p-10">
             <h1 className='text-gray-800 text-4xl font-extrabold mb-3'>Sign Up</h1>
             <h3>Alrady have an account <NavLink to={'/login'} className={'font-bold text-blue-600'}>Login here!</NavLink></h3>
-            
+
             {errors.name && <p
               role="alert"
               className='text-xs text-red-500'

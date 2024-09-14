@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { About, Admin, Contact, Dashboard, Error404, Home, Login, SignUp } from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
+import { AuthLayout, SessionLayout } from './component/index.js'
 
 
 const router = createBrowserRouter([
@@ -28,17 +29,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />
+        element: <AuthLayout authentication={false}><Login /></AuthLayout>
       },
       {
         path: '/SignUp',
-        element: <SignUp />
+        element: <AuthLayout authentication={false}><SignUp /></AuthLayout>
       },
     ]
   },
   {
     path: '/admin',
-    element: <Admin />,
+    element: (
+      <AuthLayout authentication>
+        <Admin />
+      </AuthLayout>
+    ),
     children: [
       {
         // path: '/',  // This is a Error
@@ -65,7 +70,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <SessionLayout>
+        <RouterProvider router={router} />
+      </SessionLayout>
     </Provider>
   </StrictMode>,
 )

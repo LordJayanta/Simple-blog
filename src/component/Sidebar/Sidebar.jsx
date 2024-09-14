@@ -31,14 +31,14 @@ const sideberItems = [
 ]
 
 const Sidebar = () => {
-  const [isOpenLogoutModal, setIsOpenLogoutModal] = useState(true)
+  const [isOpenLogoutModal, setIsOpenLogoutModal] = useState(false)
   return (
     <>
       <Modal
         onOpen={isOpenLogoutModal}
         onClose={() => setIsOpenLogoutModal(false)}
         height='fit-content'
-        children={<Logout/>}
+        children={<Logout cancel={() => setIsOpenLogoutModal(false)}/>}
       />
       <div className='bg-[#f7f7f8] h-screen p-5'>
         <div className="side-header mb-7">

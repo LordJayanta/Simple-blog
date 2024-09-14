@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Container } from '../../component'
 import { Logo } from '../index'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const HeaderLinks = [
   {
@@ -19,6 +20,7 @@ const HeaderLinks = [
 ]
 
 function Header() {
+  const authstatus = useSelector(state => state.auth.status)
   return (
     <header className='h-[10vh]'>
       <Container className='flex items-center justify-between py-2'>
@@ -36,15 +38,25 @@ function Header() {
         </div>
 
         <div className='flex gap-2'>
-          <Button
-            rounded='rounded-full'
-            to={'/signup'}
-          >SignUp</Button>
-          <Button
-            fill
-            rounded='rounded-full'
-            to={'/login'}
-          >Login</Button>
+          {authstatus
+            ? <Button
+              rounded='rounded-full'
+              to={'/admin'}
+            >Admin Panel</Button>
+            : (
+              <>
+                <Button
+                  rounded='rounded-full'
+                  to={'/signup'}
+                >SignUp</Button>
+                <Button
+                  fill
+                  rounded='rounded-full'
+                  to={'/login'}
+                >Login</Button>
+              </>
+            )
+          }
         </div>
       </Container>
     </header>

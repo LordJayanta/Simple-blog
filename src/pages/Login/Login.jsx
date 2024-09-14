@@ -3,8 +3,12 @@ import SideImageContainer from '../../component/SideImageContainer/SideImageCont
 import { NavLink } from 'react-router-dom'
 import { Input, Button, Container } from '../../component'
 import { useForm } from 'react-hook-form'
+import authServise from '../../appwrite/auth'
+import { login } from '../../store/authSlice'
+import { useDispatch } from 'react-redux'
 
 const Login = () => {
+    const dispatch = useDispatch()
     const {
         handleSubmit,
         register,
@@ -16,7 +20,11 @@ const Login = () => {
 
     const submitLogin = async (data) => {
         try {
-            console.log(data);
+            const session = await authServise.loginAccount(data)
+            if (session) {
+                const userData = await authServise.getCurrentUser()
+                if (userData) dispatch(login({ userData, session }))
+            }
         } catch (error) {
             console.log('Login :: ', error);
         }
