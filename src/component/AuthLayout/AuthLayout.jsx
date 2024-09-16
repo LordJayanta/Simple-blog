@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import authServise from '../../appwrite/auth'
 import { useState } from 'react'
-import {Loader} from '../index'
+import { Loader } from '../index'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,15 +10,14 @@ const AuthLayout = ({ children, authentication = true }) => {
     const authStatus = useSelector(state => state.auth.status)
 
     useEffect(() => {
-        // if (authStatus === false) navigate('./login')
-        // if(authentication && authStatus === false) navigate('./login')
-        // if(authentication && authStatus !== true) navigate('./login')
-        if (authentication && authStatus !== authentication) navigate('/login')
-        else if(!authentication && authStatus !== authentication ) navigate('/')
-        
-        authServise.getCurrentSession().then((session) => {
-            console.log(session)
-        })
+        // Save the current path before redirecting
+        if (authStatus !== authentication) {
+            if (location.pathname !== '/login') localStorage.setItem('redirectPath', location.pathname)
+
+            if (authentication) navigate('/login')
+            else navigate('/')
+        }
+
 
         setLoader(false)
     }, [authStatus, authentication, navigate])

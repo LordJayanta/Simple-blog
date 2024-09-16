@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { About, Admin, Contact, Dashboard, Error404, Home, Login, SignUp } from './pages'
+import { About, AddPost, Admin, Contact, Dashboard, Error404, Home, Login, SignUp } from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { AuthLayout, SessionLayout } from './component/index.js'
@@ -12,7 +12,11 @@ import { AuthLayout, SessionLayout } from './component/index.js'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <SessionLayout>
+        <App />
+      </SessionLayout>
+    ),
     errorElement: <Error404 />,
     children: [
       {
@@ -40,9 +44,9 @@ const router = createBrowserRouter([
   {
     path: '/admin',
     element: (
-      <AuthLayout authentication>
-        <Admin />
-      </AuthLayout>
+        <AuthLayout authentication>
+          <Admin />
+        </AuthLayout>
     ),
     children: [
       {
@@ -60,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'AddPost',
-        element: <Home />
+        element: <AddPost />
       },
     ],
     errorElement: <Error404 />,
@@ -70,9 +74,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <SessionLayout>
-        <RouterProvider router={router} />
-      </SessionLayout>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )
