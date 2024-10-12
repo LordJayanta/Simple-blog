@@ -1,12 +1,15 @@
 import React from 'react'
-import { Container } from '../../component';
+import { Carousel, Container, PostCard } from '../../component';
 
 const Home = () => {
-    return (
-        <Container className={'text-4xl'}>
-            home
-        </Container>
-    )
+  return (
+    <section>
+      <Carousel/>
+      <Container>
+        <PostCard />
+      </Container>
+    </section>
+  )
 }
 
 export default Home;

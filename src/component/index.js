@@ -5,11 +5,16 @@ import Container from "./Container/Container";
 import SideImageContainer from "./SideImageContainer/SideImageContainer";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
+import InputFile from "./InputFile/InputFile";
 import Sidebar from "./Sidebar/Sidebar";
 import Loader from './Loader/Loader'
 import AuthLayout from "./AuthLayout/AuthLayout";
 import Logout from './Logout/Logout'
 import SessionLayout from "./SessionLayout/SessionLayout";
+import PostCard from "./PostCard/PostCard";
+import Carousel from "./Carousel/Carousel";
+import SubContainer from "./SubContainer/SubContainer";
+import Categorie from "./Categorie/Categorie"
 
 export {
     Header,
@@ -21,7 +26,12 @@ export {
     SessionLayout,
     Button,
     Input, // forwordRef()
+    InputFile, // forwordRef()
     Sidebar,
+    PostCard,
     Loader,
-    Logout
+    Logout,
+    Carousel,
+    Categorie,
+    SubContainer,
 }

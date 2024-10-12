@@ -4,10 +4,13 @@ import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
 import SignUp from "./SignUp/SignUp";
 
-import Error404 from "./Error/Error404"
+import Post from "./Post/Post";
 
 import Admin from "./Admin/Admin";
 import Dashboard from "./Dashboard/Dashboard";
+import AddPost from "./AddPost/AddPost";
+
+import Error404 from "./Error/Error404"
 
 export {
     // general
@@ -17,10 +20,13 @@ export {
     Login,
     SignUp,
 
-    // Error
-    Error404,
-
+    Post,
+    
     // Admin
     Admin,
     Dashboard,
+    AddPost,
+
+    // Error
+    Error404,
 }

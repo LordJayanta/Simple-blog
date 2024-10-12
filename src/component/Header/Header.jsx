@@ -32,7 +32,7 @@ function Header() {
             <NavLink
               key={index + link.path}
               to={link.path}
-              className={({ isActive }) => isActive ? 'font-bold text-blue-500' : null}
+              className={({ isActive }) => isActive ? 'font-bold text-blue-500' : 'hover:font-semibold'}
             >{link.name}</NavLink>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Sidebar } from '../../component'
+import { Sidebar, Container } from '../../component'
 
 function Admin() {
   return (
@@ -8,9 +8,9 @@ function Admin() {
       <div className='w-[15%]'>
         <Sidebar />
       </div>
-      <div>
+      <Container className='p-8'>
         <Outlet />
-      </div>
+      </Container>
     </div>
   )
 }

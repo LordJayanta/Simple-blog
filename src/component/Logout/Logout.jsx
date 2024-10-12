@@ -19,15 +19,14 @@ const Logout = ({ cancel }) => {
       <div className='flex gap-3 w-full'>
         <Button className='w-full' onClick={cancel}>Cancel</Button>
         <Button
-          fill
-          className='w-full'
+          className='w-full hover:bg-red-500 border-red-500'
           onClick={() => {
             console.log('logout')
             // authServise.logout().then(() => {})
           }}>Logout</Button>
       </div>
-      <Button fill
-        className='w-full my-3'
+      {/* <Button fill
+        className='w-full my-3 bg-red-500 hover:bg-red-700 border-red-500'
         onClick={() => {
           console.log('logout all')
           authServise.logoutAll()
@@ -36,7 +35,7 @@ const Logout = ({ cancel }) => {
             }).catch((error) => {
               console.error('LogOut :: all logout :: ', error)
             })
-        }}>Logout from all Device</Button>
+        }}>Logout from all Device</Button> */}
     </div>
   )
 }

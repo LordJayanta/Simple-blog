@@ -21,7 +21,11 @@ const Footer = () => {
             <Logo />
             <div className='flex gap-5'>
               {FooterLinks.map((link, index) => (
-                <NavLink key={link.path + index} to={link.path} >{link.name}</NavLink>
+                <NavLink 
+                key={link.path + index} 
+                to={link.path} 
+                className={'hover:font-semibold'}
+                >{link.name}</NavLink>
               ))}
             </div>
             <div className="flex gap-5 items-center">

@@ -1,10 +1,11 @@
 import React from 'react'
 
+
 const Dashboard = () => {
+
   return (
-    <div>
-      Dashboard
-    </div>
+    <section className=''>
+    </section>
   )
 }
 

@@ -5,7 +5,7 @@ import { MdPostAdd, MdLogout } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import Modal from '../../Modal'
-import {Logout} from '../index';
+import {Logo, Logout} from '../index';
 
 const sideberItems = [
   {
@@ -42,11 +42,12 @@ const Sidebar = () => {
       />
       <div className='bg-[#f7f7f8] h-screen p-5'>
         <div className="side-header mb-7">
-          <img
+          <Logo/>
+          {/* <img
             src="./logo.svg"
             alt="simple_logo"
             className='w-20 mt-4'
-          />
+          /> */}
         </div>
 
         {sideberItems.map((item, index) => (

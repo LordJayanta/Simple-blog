@@ -6,7 +6,7 @@ function Container({
   ...props
 }) {
   return (
-    <div className={`${className} container lg:w-[90%] m-auto`} {...props}>
+    <div className={`${className} container lg:w-[90%] mx-auto`} {...props}>
       {children}
     </div>
   )

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { About, AddPost, Admin, Contact, Dashboard, Error404, Home, Login, SignUp } from './pages'
+import { About, AddPost, Admin, Contact, Dashboard, Error404, Home, Login, Post, SignUp } from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { AuthLayout, SessionLayout } from './component/index.js'
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />
+      },
+      {
+        path: '/post',
+        element: <Post />
       },
       {
         path: '/login',
